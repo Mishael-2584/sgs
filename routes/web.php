@@ -16,3 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'admin', 'as' => 'admin', 'middleware' => 'admin'], function () {
+    Route::get('/', [AdminController::class, 'index'])->name('-dashboard');
+});
+
+
+Route::group(['prefix' => 'lecturer', 'as' => 'lecturer', 'middleware' => 'lecturer'], function () {
+    Route::get('/', [LecturerController::class, 'index'])->name('-dashboard');
+});
+
+
+Route::group(['prefix' => 'student', 'as' => 'student', 'middleware' => 'student'], function () {
+    Route::get('/', [StudentController::class, 'index'])->name('-dashboard');
+});
