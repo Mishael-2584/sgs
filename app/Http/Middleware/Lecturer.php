@@ -16,10 +16,10 @@ class Lecturer
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->session()->get('isAuthenticated')==true && $request->session()->get('privilege')==2)
+        if($request->session()->get('authenticated')==true)
         {
           return $next($request);
         }
-        return redirect('login')->with('error','You are not authorsied to access that resource');
+        return redirect()->back()->with('error','You are not authorsied to access that resource');
     }
 }

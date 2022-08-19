@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LecturerController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,19 +17,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('auths.login');
+})->name('login');
 
-Route::group(['prefix' => 'admin', 'as' => 'admin', 'middleware' => 'admin'], function () {
-    Route::get('/', [AdminController::class, 'index'])->name('-dashboard');
-});
+Route::get('/signup', function () {
+    return view('auths.signup');
+})->name('signup');
+
+Route::get('redirect', [AuthController::class, 'redirect'])->name('redirect');
+Route::post('auth', [AuthController::class, 'auth'])->name('auth');
+Route::post('/store', [AuthController::class, 'store'])->name('register');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('users/export/', [StudentController::class, 'export']);
+
+// Route::group(['prefix' => 'admin', 'as' => 'admin', 'middleware' => 'admin'], function () {
+//     Route::get('/', [AdminController::class, 'index'])->name('-dashboard');
+// });
 
 
 Route::group(['prefix' => 'lecturer', 'as' => 'lecturer', 'middleware' => 'lecturer'], function () {
-    Route::get('/', [LecturerController::class, 'index'])->name('-dashboard');
+        Route::get('/', [LecturerController::class, 'index'])->name('-dashboard');
+        Route::get('/import-users', [StudentController::class, 'importUsers'])->name('-import');
+        Route::post('/upload-users', [StudentController::class, 'uploadUsers'])->name('-upload');
+
 });
 
 
-Route::group(['prefix' => 'student', 'as' => 'student', 'middleware' => 'student'], function () {
-    Route::get('/', [StudentController::class, 'index'])->name('-dashboard');
-});
+// Route::group(['prefix' => 'student', 'as' => 'student', 'middleware' => 'student'], function () {
+//     Route::get('/', [StudentController::class, 'index'])->name('-dashboard');
+// });

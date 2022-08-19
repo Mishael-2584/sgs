@@ -16,10 +16,6 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->session()->get('isAuthenticated')==true && $request->session()->get('privilege')==1)
-        {
-          return $next($request);
-        }
-        return redirect('login')->with('error','You are not authorsied to access that resource');
+        
     }
 }
