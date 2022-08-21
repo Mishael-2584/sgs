@@ -39,22 +39,21 @@ h3, h4, h5 {
   font-weight: 600;
 }
 
-.nav > li > a{
+.nav > li > a {
   color: #a7b1c2;
   font-weight: 600;
   padding: 14px 20px 14px 25px;
 }
 
-.nav.navbar-right > li > a, .nav.navbar-right > div > li > a  {
+.nav.navbar-right > li > a {
   color: #999c9e;
 }
 
-.nav > li > a.active{
+.nav > li.active > a {
   color: #ffffff;
 }
 
- .navbar-default .nav > li > a:focus, 
-.navbar-default .nav > li > a:hover{
+.navbar-default .nav > li > a:hover, .navbar-default .nav > li > a:focus {
   background-color: #293846;
   color: white;
 }
@@ -69,11 +68,6 @@ h3, h4, h5 {
 
 .nav > li > a i {
   margin-right: 6px;
-}
-
-.nav > .linkR{
-  margin: 0;
-  padding: 0;
 }
 
 .navbar {
@@ -138,10 +132,6 @@ h3, h4, h5 {
 
 .dropdown-menu > li > a.font-bold {
   font-weight: 600;
-}
-
-.dropdown-menu > li > a.dropdown-item:hover{
-  color: #0e9aef;
 }
 
 .navbar-top-links .dropdown-menu li {
@@ -216,22 +206,16 @@ ul.nav-second-level {
   background: #293846;
 }
 
-.nav >div> li.active {
+.nav > li.active {
   border-left: 4px solid #19aa8d;
   background: #293846;
 }
 
-.nav > li, .nav > li:hover{
-  min-height: 50px;
-  width: 100%;
-}
-
-
-.nav.nav-second-level > div > li.active {
+.nav.nav-second-level > li.active {
   border: none;
 }
 
-.nav .nav-second-level.collapse[style] div{
+.nav.nav-second-level.collapse[style] {
   height: auto !important;
 }
 
@@ -300,27 +284,25 @@ ul.nav-second-level {
   border-bottom: none !important;
 }
 
-.nav-second-level li a, .nav-second-level li a {
+.nav-second-level li a {
   padding: 7px 10px 7px 10px;
   padding-left: 52px;
 }
 
-.nav-third-level div li a, .nav-third-level li a {
+.nav-third-level li a {
   padding-left: 62px;
 }
 
-.nav-second-level li:last-child, .nav-second-level div li:last-child {
+.nav-second-level li:last-child {
   margin-bottom: 10px;
 }
 
 body:not(.fixed-sidebar):not(.canvas-menu).mini-navbar .nav li:hover > .nav-second-level,
-body:not(.fixed-sidebar):not(.canvas-menu).mini-navbar .nav .linkR li:hover > .nav-second-level,
-.mini-navbar .nav li:focus > .nav-second-level,
- .nav div li:focus > .nav-second-level {
+.mini-navbar .nav li:focus > .nav-second-level {
   display: block;
   border-radius: 0 2px 2px 0;
   min-width: 140px;
-  height: 20px;
+  height: auto;
 }
 
 body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
@@ -332,7 +314,6 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
   padding-bottom: 60px;
 }
 
-.mini-navbar .nav-second-level div li a,
 .mini-navbar .nav-second-level li a {
   padding: 10px 10px 10px 15px;
 }
@@ -430,7 +411,7 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
   cursor: default;
 }
 
-.nav.nav-tabs div li {
+.nav.nav-tabs li {
   background: none;
   border: none;
 }
