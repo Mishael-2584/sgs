@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Score;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class ScoreController extends Controller
@@ -12,6 +13,45 @@ class ScoreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function allresults()
+    {
+        $scores = Score::all();
+        // dd($score);
+        return view('lecturer.allresults', compact('scores'));
+    }
+
+    public function view_result($id)
+    {
+        
+        $score = Score::where('student_id',$id)->get()->first();
+        // dd($score);
+        return view('lecturer.resultsview', compact('score'));
+    }
+
+    public function submit_result(Request $request, $id){
+        $score = Score::where('student_id', $id)->get()->first();
+        $score->attendace = $request->attendance;
+        $score->assignments = $request->assignments;
+        $score->quiz = $request->quiz;
+        $score->mid_semester = $request->midsem;
+        $score->final_exam = $request->final;
+        $score->total_grade = $request->total_grade;
+        $score->letter_grade = $request->letter_grade;
+        $saved = $score->save();
+
+        if ($saved){
+            return back()->with('success', 'Scores have been updated successfully!!!');
+        }
+
+        else{
+            return back()->with('danger', 'Scores have failed to be updated successfully!!!');
+        }
+
+
+
+    }
+
     public function index()
     {
         //

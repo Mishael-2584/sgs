@@ -29,12 +29,10 @@
                 <a href="{{route('lecturer-import')}}"><i class="fa fa-user"></i> <span class="nav-label">Upload Students</span> </a>
             </li>
             <li class="#">
-                <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Add Students</span></a>
+                <a href="{{route('lecturer-add-material')}}"><i class="fa fa-book"></i> <span class="nav-label">Add Course Material</span></a>
             </li>
-            
             <li class="#">
-            <li class="#">
-                <a href="#"><i class="fa fa-eye"></i> <span class="nav-label">All Results</span></a>
+                <a href="{{route('lecturer-allresults')}}"><i class="fa fa-eye"></i> <span class="nav-label">All Results</span></a>
             </li>
             <li class="">
                 <a href=""><i class="fa fa-users"></i> <span class="nav-label">User management</span> </a>

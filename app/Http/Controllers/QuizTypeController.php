@@ -12,6 +12,21 @@ class QuizTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function addquiz(Request $request){
+        $saved = QuizType::create([
+                    'title' => $request->title,
+                    'quiz_out_of' => $request->outof,
+                ]);
+        if($saved){
+            return back()->with('success', 'Quiz Added Successfully!!');
+        }
+
+        else{
+            return back()->with('error', 'Quiz has failed to be added!!');
+        }
+    }
+
     public function index()
     {
         //

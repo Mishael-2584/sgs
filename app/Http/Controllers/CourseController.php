@@ -29,6 +29,10 @@ class CourseController extends Controller
 
         return view('lecturer.addcourse');
     }
+
+    public function addmaterial(){
+        return view('lecturer.addmaterial');
+    }
     
     public function submitcourse(Request $request, Course $course){
         //$course = Course::all();

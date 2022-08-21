@@ -12,6 +12,21 @@ class AssignmentTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function addassignment(Request $request){
+        $saved = AssignmentType::create([
+            'title' => $request->title,
+            'assignment_out_of' => $request->outof,
+        ]);
+if($saved){
+    return back()->with('success', 'Assignment Added Successfully!!');
+}
+
+else{
+    return back()->with('error', 'Assignment has failed to be added!!');
+}
+    }
+
     public function index()
     {
         //
