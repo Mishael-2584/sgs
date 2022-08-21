@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+    protected $table='courses';
+
+    function lecturer()
+    {
+        return $this->belongsTo('App\Models\Lecturer','course_id');
+    }
+
+    
 }

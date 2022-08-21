@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Lecturer;
 use Illuminate\Support\Facades\DB;
 
@@ -10,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+
 
 class AuthController extends Controller
 {
@@ -28,7 +30,7 @@ class AuthController extends Controller
         }
     }
 
-    public function auth(Request $request)
+    public function auth(Request $request, Course $course)
     {
         $rule = [
             'email' => 'required',
@@ -50,6 +52,12 @@ class AuthController extends Controller
                     $request->session()->put('email', $lecturer->email);
                     
                     $request->session()->put('authenticated', true);
+
+                    $id = session()->get("id");
+                    $course_id = Lecturer::where('id',$id)->get('course_id')->first();
+                    if($course_id->course_id!=null){
+                    $request->session()->put('course_id', $course->id);
+                    }
                     return redirect('redirect');
                 } else {
                     return back()->with('error', 'password Mismatch');
@@ -74,7 +82,7 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function store(Request $request, Lecturer $lecturer)
+    public function store(Request $request, Course $course, Lecturer $lecturer)
     {
         $rules=[
             'email'=>'required|email|unique:lecturers,email',
@@ -111,6 +119,9 @@ class AuthController extends Controller
                     $request->session()->put('staff_name', $lecturer->name);
                     $request->session()->put('email', $lecturer->email);
                     $request->session()->put('authenticated', true);
+                    
+                    
+                    
                     return redirect()->route('redirect')->with('success', 'User created sucessfully');
                       
                   }

@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\StudentController;
+use Database\Seeders\LecturerSeeder;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +41,8 @@ Route::group(['prefix' => 'lecturer', 'as' => 'lecturer', 'middleware' => 'lectu
         Route::get('/', [LecturerController::class, 'index'])->name('-dashboard');
         Route::get('/import-users', [StudentController::class, 'importUsers'])->name('-import');
         Route::post('/upload-users', [StudentController::class, 'uploadUsers'])->name('-upload');
+        Route::get('/add-course', [CourseController::class, 'addcourse'])->name('-addcourse');
+        Route::post('/course-submit', [CourseController::class, 'submitcourse'])->name('-submit-course');
 
 });
 

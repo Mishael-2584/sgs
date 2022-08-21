@@ -23,7 +23,7 @@
                 <a href=""><i class="fa fa-dashboard"></i> <span class="nav-label">Dashboard</span> </a>
             </li>
             <li class="#">
-                <a href="#"><i class="fa fa-building"></i> <span class="nav-label">Add Course</span></a>
+                <a href="{{route('lecturer-addcourse')}}"><i class="fa fa-building"></i> <span class="nav-label">Add Course</span></a>
             </li>
             <li class="">
                 <a href="{{route('lecturer-import')}}"><i class="fa fa-user"></i> <span class="nav-label">Upload Students</span> </a>
@@ -39,7 +39,7 @@
             <li class="">
                 <a href=""><i class="fa fa-users"></i> <span class="nav-label">User management</span> </a>
             </li>
-            @endif --}}
+            @endif
 
             {{-- <li class="">
                 <a href=""><i class="fa fa-file-o"></i> <span class="nav-label">Requistions</span></a>
