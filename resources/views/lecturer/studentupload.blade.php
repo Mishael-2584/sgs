@@ -5,10 +5,10 @@
 @section('content')
  <div class="wrapper wrapper-content">
           
-    <div class="col-lg-6">
+    <div class="uploadExcel">
         <div class="ibox ">
             <div class="ibox-title">
-                <h5>Input example - Bootstrap</h5>
+                <h5>Choose file to upload E.g class.xlsc</h5>
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
@@ -53,7 +53,11 @@
 </div>
 
 @endsection
-
+<style>
+    .custom-file-label{
+        margin-top: 1rem
+    }
+</style>
 @section('scripts')
 $('.custom-file-input').on('change', function() {
     let fileName = $(this).val().split('\\').pop();
