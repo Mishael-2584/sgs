@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\StudentsExport;
 use App\Imports\StudentsImport;
+use App\Models\Score;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -30,7 +31,7 @@ class StudentController extends Controller
         return view('lecturer.studentupload');
     }
 
-    public function uploadUsers(Request $request)
+    public function uploadUsers(Request $request, Score $score)
     {
 
 
@@ -59,12 +60,13 @@ class StudentController extends Controller
             // $destinationPath = ROOTDIR . 'upload/imgdogs/';
             // //Input::file('ufile')->move($destinationPath, $newname);
             // $file->move($destinationPath, $newname);
-///////////more code ////////////////////////////////////////////
+
 
 
         $import = Excel::import(new StudentsImport, $filepath);
         
         if($import){
+            
             return back()->with('success', 'Import Successful!');
         }
         else{

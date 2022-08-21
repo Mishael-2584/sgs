@@ -10,4 +10,15 @@ class Student extends Model
     use HasFactory;
     protected $guarded = [];
     protected $table='students';
+
+    function assignment()
+    {
+        return $this->belongsTo('App\Models\Assignment','assignment_type_id');
+    }
+
+    function quiz()
+    {
+        return $this->belongsTo('App\Models\Quiz','student_id');
+    }
+    
 }

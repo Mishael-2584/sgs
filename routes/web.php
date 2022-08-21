@@ -1,8 +1,14 @@
 <?php
 
+use App\Http\Controllers\AssignmentTypeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LecturerController;
+use App\Http\Controllers\QuizTypeController;
+use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\StudentController;
+use App\Models\Score;
+use Database\Seeders\LecturerSeeder;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,7 +45,15 @@ Route::group(['prefix' => 'lecturer', 'as' => 'lecturer', 'middleware' => 'lectu
         Route::get('/', [LecturerController::class, 'index'])->name('-dashboard');
         Route::get('/import-users', [StudentController::class, 'importUsers'])->name('-import');
         Route::post('/upload-users', [StudentController::class, 'uploadUsers'])->name('-upload');
-
+        Route::get('/add-course', [CourseController::class, 'addcourse'])->name('-addcourse');
+        Route::post('/course-submit', [CourseController::class, 'submitcourse'])->name('-submit-course');
+        Route::get('/all-results', [ScoreController::class, 'allresults'])->name('-allresults');
+        Route::get('/view-result/{id}', [ScoreController::class, 'view_result'])->name('-view-result');
+        Route::post('/result-submit/{id}', [ScoreController::class, 'submit_result'])->name('-submit-result');
+        Route::get('/add-material', [CourseController::class, 'addmaterial'])->name('-add-material');
+        Route::post('/quiz-add', [QuizTypeController::class, 'addquiz'])->name('-add-quiz');
+        Route::post('/assignment-add', [AssignmentTypeController::class, 'addassignment'])->name('-add-assignment');
+        
 });
 
 

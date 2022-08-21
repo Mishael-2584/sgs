@@ -17,8 +17,8 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('course_code')->unique()->nullable();
             $table->string('title');
-            $table->string('session');
-            $table->integer('unit');
+            $table->string('session')->nullable();
+            $table->integer('unit')->nullable();
             $table->timestamps();
         });
     }
