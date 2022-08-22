@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\AssignmentTypeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LecturerController;
+use App\Http\Controllers\QuizController;
 use App\Http\Controllers\QuizTypeController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\StudentController;
@@ -42,7 +44,7 @@ Route::get('users/export/', [StudentController::class, 'export']);
 
 
 Route::group(['prefix' => 'lecturer', 'as' => 'lecturer', 'middleware' => 'lecturer'], function () {
-        Route::get('/', [LecturerController::class, 'index'])->name('-dashboard');
+        Route::get('', [LecturerController::class, 'index'])->name('-dashboard');
         Route::get('/import-users', [StudentController::class, 'importUsers'])->name('-import');
         Route::post('/upload-users', [StudentController::class, 'uploadUsers'])->name('-upload');
         Route::get('/add-course', [CourseController::class, 'addcourse'])->name('-addcourse');
@@ -53,8 +55,15 @@ Route::group(['prefix' => 'lecturer', 'as' => 'lecturer', 'middleware' => 'lectu
         Route::get('/add-material', [CourseController::class, 'addmaterial'])->name('-add-material');
         Route::post('/quiz-add', [QuizTypeController::class, 'addquiz'])->name('-add-quiz');
         Route::post('/assignment-add', [AssignmentTypeController::class, 'addassignment'])->name('-add-assignment');
-        
-});
+        Route::get('/part-results', [ScoreController::class, 'partresults'])->name('-part-results');
+        Route::get('/quiz-result/{id}', [QuizController::class, 'quizresult'])->name('-quiz-result');
+        Route::get('/assignment-result/{id}', [AssignmentController::class, 'assignmentresult'])->name('-assignments-result');
+        Route::get('/quiz-grade/{id}', [QuizController::class, 'quizgrade'])->name('-quiz-grade');
+        Route::get('/assignment-grade/{id}', [AssignmentController::class, 'assignmentgrade'])->name('-assignment-grade');
+
+        Route::post('/submit_assignment_result/{id}', [AssignmentController::class, 'submit_assignment_result'])->name('-submit-assignment_result');
+        Route::post('/submit_quiz_result/{id}', [QuizController::class, 'submit_quiz_result'])->name('-submit-quiz_result');
+}); 
 
 
 // Route::group(['prefix' => 'student', 'as' => 'student', 'middleware' => 'student'], function () {

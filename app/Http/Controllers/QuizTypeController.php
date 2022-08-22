@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Quiz;
 use App\Models\QuizType;
+use App\Models\Score;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class QuizTypeController extends Controller
@@ -16,10 +19,28 @@ class QuizTypeController extends Controller
     public function addquiz(Request $request){
         $saved = QuizType::create([
                     'title' => $request->title,
-                    'quiz_out_of' => $request->outof,
+                    'quiz_out_of' => intval($request->outof),
                 ]);
         if($saved){
+            $quiz_type = QuizType::where('title', $request->title)->get('id')->first();
+            // $quiz = Quiz::all();
+            $students = Student::all();
+            // dd($students);
+            foreach ($students as $student) {
+                
+
+                
+                $score_id = Score::where('student_id', $student->id)->get('id')->first();
+                // dd($score_id);
+                Quiz::create([
+                'quiz_type_id' => $quiz_type->id,
+                'student_id' => $student->id,
+                'score_id' => $score_id->id,
+            ]);
+            }
             return back()->with('success', 'Quiz Added Successfully!!');
+            
+
         }
 
         else{

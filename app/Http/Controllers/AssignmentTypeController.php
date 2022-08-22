@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Assignment;
 use App\Models\AssignmentType;
+use App\Models\Score;
+use App\Models\Student;
 use Illuminate\Http\Request;
+
 
 class AssignmentTypeController extends Controller
 {
@@ -19,13 +23,26 @@ class AssignmentTypeController extends Controller
             'assignment_out_of' => $request->outof,
         ]);
 if($saved){
+    $assignmentType = AssignmentType::where('title', $request->title)->get('id')->first();
+            $students = Student::all();
+            foreach ($students as $student) {
+                $score_id = Score::where('student_id', $student->id)->get('id')->first();
+                // dd($score_id);
+                Assignment::create([
+                'assignment_type_id' => $assignmentType->id,
+                'student_id' => $student->id,
+                'score_id' => $score_id->id,
+            ]);
+            }
+
+
     return back()->with('success', 'Assignment Added Successfully!!');
 }
 
 else{
     return back()->with('error', 'Assignment has failed to be added!!');
 }
-    }
+}
 
     public function index()
     {

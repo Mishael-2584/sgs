@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Assignment;
+use App\Models\AssignmentType;
+use App\Models\Quiz;
 use Illuminate\Http\Request;
 
 class AssignmentController extends Controller
@@ -12,6 +14,38 @@ class AssignmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function assignmentresult($id)
+    {
+        $students = Assignment::where('assignment_type_id', $id)->get()->all();
+        $assignment_title = AssignmentType::where('id',$id)->get('title')->first();
+        
+        
+        return view('lecturer.assignmentresult', compact('students', 'assignment_title'));
+        
+    }
+
+    public function submit_assignment_result(Request $request, $id)
+    {
+        $assignment_score = Assignment::where('id', $id)->get()->first();
+        $assignment_score->grade = $request->score;
+        $saved = $assignment_score->save();
+        if ($saved){
+            return back()->with('success', 'Assignment has been uploaded successfully!!');
+        }
+        else{
+            return back()->with('error', 'Assignment has failed to be uploaded!!');
+        }
+    }
+
+    public function assignmentgrade($id)
+    {
+        $assignment = Assignment::where('id', $id)->get()->first();
+        return view('lecturer.assignmentgrade', compact('assignment'));
+    }
+
+    
+
     public function index()
     {
         //

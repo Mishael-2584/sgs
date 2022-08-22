@@ -25,7 +25,9 @@
                             <div class="col-lg-12">
                                <ul class="nav nav-tabs">
                                 <li class="text-color"><a class="nav-link active" data-toggle="tab" href="#tab-1"><i class="fa fa-plus"></i>ADD NEW QUIZ</a></li>
-                                <li><a class="text-color" data-toggle="tab" href="#tab-2"><i class="fa fa-address-book"></i>ADD NEW ASSIGNMENTS</a></li>
+                                <li class="text-color"><a class="nav-link active" data-toggle="tab" href="#tab-2"><i class="fa fa-file"></i>VIEW CURRENT QUIZZES</a></li>
+                                <li><a class="text-color" data-toggle="tab" href="#tab-3"><i class="fa fa-plus"></i>ADD NEW ASSIGNMENTS</a></li>
+                                <li class="text-color"><a class="nav-link active" data-toggle="tab" href="#tab-4"><i class="fa fa-file "></i>VIEW CURRENT ASSIGNMENTS</a></li>
                                </ul>
                            <div class="tab-content">
 							  <div id="tab-1" class="tab-pane active">
@@ -53,9 +55,43 @@
 							 </div>
                 
                             </div>
+
+                            <div id="tab-2" class="tab-pane">
+                                <div class="ibox">
+                                    <div class="ibox-content forum-container">
+                                        <div class="forum-item active">
+                                            @isset($quiztypes)
+                                            @foreach ($quiztypes as $quiz_type)
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <div class="forum-icon">
+                                                        <i class="fa fa-file"></i>
+                                                    </div>
+                                                    <a href="#" class="forum-item-title">{{$quiz_type->title}}</a>
+                                                </div>
+                                                <div class="col-md-1 forum-info">
+                                                    <div>
+                                                        <small>Out Of</small>
+                                                    </div>
+                                                    <span class="views-number">
+                                                        @php
+                                                            echo(intval($quiz_type->quiz_out_of))
+                                                        @endphp
+                                                    </span>
+                                                    
+                                                </div>
+                                            </div>
+                                                
+                                            @endforeach
+                                            @endisset
+                                            
+                                        </div>
+                                    </div>
+                                                </div>
+                                            </div>
                            
                     
-                <div id="tab-2" class="tab-pane">
+                <div id="tab-3" class="tab-pane">
                   <div class="ibox">
                     <div class="ibox-content">  
                         <form method="POST" action="{{route('lecturer-add-assignment')}}">
@@ -81,6 +117,38 @@
                     </div>
                                   </div>
                               </div>
+                              <div id="tab-4" class="tab-pane">
+                                <div class="ibox">
+                                    <div class="ibox-content forum-container">
+                                        <div class="forum-item active">
+                                            @isset($assignmenttypes)
+                                            @foreach ($assignmenttypes as $ass_type)
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <div class="forum-icon">
+                                                        <i class="fa fa-file"></i>
+                                                    </div>
+                                                    <a href="#" class="forum-item-title">{{$ass_type->title}}</a>
+                                                </div>
+                                                <div class="col-md-1 forum-info">
+                                                    <div>
+                                                        <small>Out Of</small>
+                                                    </div>
+                                                    <span class="views-number">
+                                                        @php
+                                                            echo(intval($ass_type->assignment_out_of))
+                                                        @endphp
+                                                    </span>
+                                                    
+                                                </div>
+                                            </div> 
+                                            @endforeach
+                                            @endisset
+                                        </div>
+                                    </div>
+                                                </div>
+                                            </div>
+                    
                 </div>
               </div>
             </div>

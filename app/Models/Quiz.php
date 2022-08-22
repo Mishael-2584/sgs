@@ -10,4 +10,14 @@ class Quiz extends Model
     use HasFactory;
     protected $guarded = [];
     protected $table='quizzes';
+
+    function student()
+    {
+        return $this->belongsTo('App\Models\Student','student_id');
+    }
+
+    function quiz_type()
+    {
+        return $this->belongsTo('App\Models\QuizType','quiz_type_id');
+    }
 }
