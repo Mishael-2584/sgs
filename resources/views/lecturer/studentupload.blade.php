@@ -8,7 +8,7 @@
     <div class="col-lg-6">
         <div class="ibox ">
             <div class="ibox-title">
-                <h5>Upload Students. Format (name | matric_no)</h5>
+                <h5>Upload Students. Format (Full Name | Matric Number)</h5>
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
