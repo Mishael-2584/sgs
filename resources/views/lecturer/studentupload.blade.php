@@ -5,10 +5,10 @@
 @section('content')
  <div class="wrapper wrapper-content">
           
-    <div class="col-lg-12">
-        <div class="ibox">
+    <div class="col-lg-6">
+        <div class="ibox ">
             <div class="ibox-title">
-                <h5>Upload Students. Format for column headings (name | matric_no)</h5>
+                <h5>Upload Students. Format (name | matric_no)</h5>
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="hr-line-dashed"></div>
-
+                
                 <div class="form-group  row">
                 <label class="col col-form-label">Group (LEAVE NULL IF NOT APPLICABLE)</label>
                 <select class="form-control m-b" name="group">
@@ -65,7 +65,11 @@
 </div>
 
 @endsection
-
+<style>
+    .custom-file-label{
+        margin-top: 1rem
+    }
+</style>
 @section('scripts')
 $('.custom-file-input').on('change', function() {
     let fileName = $(this).val().split('\\').pop();

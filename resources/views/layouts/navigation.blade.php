@@ -4,8 +4,8 @@
             <li class="nav-header"> 
                 <div class="dropdown profile-element">
                         <img alt="image" class="rounded-circle" src="{{asset('BU_logo.png')}}"alt="BU logo" style="width: 180px;"/>
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="block m-t-xs font-bold">{{ucwords(session()->get('staff_name'))}}</span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" id="s-menu" href="#">
+                            <span class="block m-t-xs font-bold staffName">{{ucwords(session()->get('staff_name'))}}</span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a class="dropdown-item" href="profile.html">Profile</a></li>
@@ -20,19 +20,16 @@
 
             @if (Session::get('authenticated')==true)
             <li class="">
-                <a href="{{route('lecturer-dashboard')}}"><i class="fa fa-dashboard"></i> <span class="nav-label">Dashboard</span> </a>
+                <a href=""><i class="fa fa-dashboard"></i> <span class="nav-label">Dashboard</span> </a>
             </li>
             <li class="#">
                 <a href="{{route('lecturer-addcourse')}}"><i class="fa fa-building"></i> <span class="nav-label">Add Course</span></a>
             </li>
             <li class="">
-                <a href="{{route('lecturer-import')}}"><i class="fa fa-file-excel-o "></i> <span class="nav-label">Upload Students</span> </a>
+                <a href="{{route('lecturer-import')}}"><i class="fa fa-user"></i> <span class="nav-label">Upload Students</span> </a>
             </li>
             <li class="#">
                 <a href="{{route('lecturer-add-material')}}"><i class="fa fa-book"></i> <span class="nav-label">Add Course Material</span></a>
-            </li>
-            <li class="#">
-                <a href="{{route('lecturer-part-results')}}"><i class="fa fa-list-alt"></i> <span class="nav-label">Quiz and Assignments</span></a>
             </li>
             <li class="#">
                 <a href="{{route('lecturer-allresults')}}"><i class="fa fa-eye"></i> <span class="nav-label">All Results</span></a>
@@ -53,3 +50,35 @@
 
     </div>
 </nav>
+<style>
+    #s-menu{
+        transition: all step-end 2s;
+    }
+    .staffName{
+        padding-top: 2rem;
+    }
+    .log-Out:hover{
+        background-color: black;
+        color: blue;
+    }
+    .active{
+        background-color: #337ab7;
+    }
+</style>
+@section('scripts')
+<script src="{{asset('js/plugins/jquery-3.1.1.min.js')}}"></script>
+<script src="{{asset('js/plugins/dataTables/dataTables/bootstrap.min.js')}}"></script>
+   <script>
+        $('nav div ul li').mouseover(function(){
+            $('nav div ul li a').css("color","white");
+        })
+        jQuery(function($) {
+        var path = window.location.href;
+        $('nav div ul div li').each(function() {
+        if (this.href === path) {
+        $(this).addClass('active');
+        }
+        });
+        });
+   </script>
+@endsection
