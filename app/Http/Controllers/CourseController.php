@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\AssignmentType;
 use App\Models\Course;
 use App\Models\Lecturer;
+use App\Models\QuizType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -28,6 +29,12 @@ class CourseController extends Controller
     public function addcourse(){
 
         return view('lecturer.addcourse');
+    }
+
+    public function addmaterial(){
+        $quiztypes = QuizType::all();
+        $assignmenttypes = AssignmentType::all();
+        return view('lecturer.addmaterial', compact('quiztypes', 'assignmenttypes'));
     }
     
     public function submitcourse(Request $request, Course $course){

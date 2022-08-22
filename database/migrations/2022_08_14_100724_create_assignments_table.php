@@ -16,8 +16,8 @@ class CreateAssignmentsTable extends Migration
         Schema::create('assignments', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('assignment_type_id')->unsigned();
-            $table->bigInteger('student_id')->unsigned();
-            $table->bigInteger('score_id')->unsigned();
+            $table->bigInteger('student_id')->unsigned()->nullable();
+            $table->bigInteger('score_id')->unsigned()->nullable();
             $table->decimal('grade')->nullable();
 
             $table->timestamps();

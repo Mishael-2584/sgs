@@ -50,9 +50,14 @@ class StudentsImport implements ToCollection, WithHeadingRow
   
         foreach ($rows as $row) {
             Student::create([
+<<<<<<< HEAD
                 'name' => $row['name'],
                 'matric_no' => $row['matric_no'],
                 'group' => $row['group'],
+=======
+                'name' => $row['Full Name'],
+                'matric_no' => $row['Matric Number'],
+>>>>>>> a4ff2f8703df43a89bbd378dcac5a577223ccb0c
                 
             ]);
             $studentid = Student::where('matric_no', $row['matric_no'])->get('id')->first();

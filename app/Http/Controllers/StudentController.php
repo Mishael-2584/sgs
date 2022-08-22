@@ -33,41 +33,31 @@ class StudentController extends Controller
 
     public function uploadUsers(Request $request, Score $score)
     {
-
-
-            
-
-            // $file_name = $request->getClientOriginalName();
-            // dd($file_name);
-
-            //$input = Input::file('import');
             $filename = $request->import->getClientOriginalName(); // original name that it was uploaded with
             $fileInfo = pathinfo('import');
             $destinationPath = 'uploads/';
             $move1 = $request->import->move($destinationPath,$filename);
-            // $move2 = $request->import->store('public/uploads');
+    
             $filepath = $destinationPath.''.$filename;
             
             
-                
-            // $destinationPath = '/uploads/'; // path to save to, has to exist and be writeable
-            // $input->move($destinationPath,$fileName); // moving the file to specified dir with the original name
             
-            // $file_ext = $file->getClientOriginalExtension();
-            // $fileInfo = pathinfo($file_name);
-            // $filename = $fileInfo['filename'];
-            // $newname = $filename . $lid . "." . $file_ext;
-            // $destinationPath = ROOTDIR . 'upload/imgdogs/';
-            // //Input::file('ufile')->move($destinationPath, $newname);
-            // $file->move($destinationPath, $newname);
-
-
-
         $import = Excel::import(new StudentsImport, $filepath);
         
         if($import){
-            
+
+            $students = Student::all();
+
+            if($request->group)
+            foreach ($students as $student) {
+                Student::create([
+                    'group' => $request->group,
+                ]);
+            }
+
+
             return back()->with('success', 'Import Successful!');
+
         }
         else{
             return back()->with('warning', 'Import Failed!');

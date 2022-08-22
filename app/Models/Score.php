@@ -16,6 +16,11 @@ class Score extends Model
         return $this->belongsTo('App\Models\Assignment','score_id');
     }
 
+    function student()
+    {
+        return $this->belongsTo('App\Models\Student','student_id');
+    }
+
     function quiz()
     {
         return $this->belongsTo('App\Models\Quiz','score_id');
