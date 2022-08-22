@@ -12,8 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-// use Symfony\Component\HttpFoundation\Request;
-use Illuminate\Http\Request;
+
 
 
 
@@ -40,7 +39,7 @@ class StudentsImport implements ToCollection, WithHeadingRow
             
     // }
 
-    public function collection(Collection $rows, Request $request)
+    public function collection(Collection $rows)
     {
          Validator::make($rows->toArray(), [
              '*.name' => 'required',
@@ -53,7 +52,7 @@ class StudentsImport implements ToCollection, WithHeadingRow
             Student::create([
                 'name' => $row['name'],
                 'matric_no' => $row['matric_no'],
-                'group' => $request['group'],
+                'group' => $row['group'],
                 
             ]);
             $studentid = Student::where('matric_no', $row['matric_no'])->get('id')->first();
