@@ -8,11 +8,7 @@
     <div class="col-lg-6">
         <div class="ibox ">
             <div class="ibox-title">
-<<<<<<< HEAD
-                <h5>Upload Students. Format (name | matric_no | group)</h5>
-=======
                 <h5>Upload Students. Format (Full Name | Matric Number)</h5>
->>>>>>> a4ff2f8703df43a89bbd378dcac5a577223ccb0c
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
@@ -42,7 +38,7 @@
 
                 <div class="hr-line-dashed"></div>
 
-                <div class="col-xl-4 col-lg-6 col-md-12">
+                {{-- <div class="col-xl-4 col-lg-6 col-md-12">
                     <div class="card">
                         <div class="card-header">
                             <label class="card-title" for="selectColor1">Select Class Group</label>
@@ -56,13 +52,13 @@
                                     <option value="2">B</option>
                                     <option value="3">C</option>
                                     <option value="4">D</option>
-                                    {{-- <option value="5">Null</option> --}}
+                                    <option value="5">Null</option>
                                 </select>
                             </fieldset>
                         </div>
 
                     </div>
-                </div>
+                </div> --}}
                 
                 <div class="form-group  row">
                 <label class="col col-form-label">Group (LEAVE NULL IF NOT APPLICABLE)</label>

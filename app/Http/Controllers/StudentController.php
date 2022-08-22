@@ -50,9 +50,11 @@ class StudentController extends Controller
 
             if($request->group)
             foreach ($students as $student) {
-                Student::create([
-                    'group' => $request->group,
-                ]);
+                // Student::create([
+                //     'group' => $request->group,
+                // ]);
+                $student->group = $request->group;
+                $student->save();
             }
 
 
