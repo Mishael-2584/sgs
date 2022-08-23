@@ -44,13 +44,15 @@ class StudentsImport implements ToCollection, WithHeadingRow
          Validator::make($rows->toArray(), [
              '*.name' => 'required',
              '*.matric_no' => 'required|unique:students,matric_no|min:7|max:8',
+             '*group' => 'required',
 
          ])->validate();
-  
+            
         foreach ($rows as $row) {
+            // dd($row);
             Student::create([
-                'name' => $row['Full Name'],
-                'matric_no' => $row['Matric Number'],
+                'name' => $row['name'],
+                'matric_no' => $row['matric_no'],
                 
             ]);
             $studentid = Student::where('matric_no', $row['matric_no'])->get('id')->first();

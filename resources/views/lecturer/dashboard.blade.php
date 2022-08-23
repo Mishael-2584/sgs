@@ -2,6 +2,9 @@
 
 @section('title', 'Dashboard')
 
+
+
+
 @section('content')
  <div class="wrapper wrapper-content">
     <div class="row">

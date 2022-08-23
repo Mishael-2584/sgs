@@ -31,7 +31,7 @@ class QuizTypeController extends Controller
 
                 
                 $score_id = Score::where('student_id', $student->id)->get('id')->first();
-                // dd($score_id);
+                // dd($score_id->id);
                 Quiz::create([
                 'quiz_type_id' => $quiz_type->id,
                 'student_id' => $student->id,
