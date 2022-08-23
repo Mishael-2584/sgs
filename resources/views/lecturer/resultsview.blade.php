@@ -6,7 +6,7 @@
  <div class="wrapper wrapper-content">
     <div class="ibox ">
         <div class="ibox-title">
-            <h5>All form elements <small>With custom checbox and radion elements.</small></h5>
+            <h5>Correctly fill in student details</h5>
             <div class="ibox-tools">
                 <a class="collapse-link">
                     <i class="fa fa-chevron-up"></i>

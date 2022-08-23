@@ -3,10 +3,11 @@
 @section('content') 
  <div class="middle-box text-center loginscreen animated fadeInDown">
      <style>
+  
          .b-bg {
              background-color:#004282;
          }
-         .white-text{
+         .text{
             color:#ffffff;
             font-weight: 800;
          }
@@ -56,14 +57,14 @@
      </style>
 
      @include('layouts.error')
-        <div>
+        <div class="sshh">
             <div>
 
                 {{-- <h1 class="logo-name">PMS</h1> --}}
                   <h1 class="logo-name"><img src="{{asset('BU_logo.png')}}" alt="" style="width: 300px;"></h1>
 
             </div>
-            <h2 class="white-text">SEMESTER GRADING SYSTEM</h2>
+            <h2 class="text ssh">SEMESTER GRADING SYSTEM</h2>
                 <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
             </p>
             <h2 class="gold-text-login">LOGIN</h2>
@@ -85,4 +86,48 @@
             <p class="m-t white-text"> <small>SGS &copy; <?php echo date("Y"); ?></small> </p>
         </div>
     </div>
+    <style>
+        @media (max-width:768px) {
+              .b-bg {
+              background-color:#004282;
+          }
+              .text{
+                  color:#004282;!important
+                  font-weight: 800;
+              }
+              .gold-text{
+                  color:#004282;
+              }
+                  .gold-text-login{
+                  color:#004282;
+                  font-size:28px;
+                  font-weight: 700;
+              }
+              .btn-white {
+                  color:#e6eaee;
+                  background: #004282;
+                  font-weight: bold; 
+                  border-radius: 20px;
+              }
+              .btn-white:hover{
+                  background-color: #040404;
+                  color:#ffffff;
+                  transition: ease-in 1.1s;
+              }
+              .forgot-password, a:link{
+                  color: #004282;
+                  font-size: 16px;
+              }
+              .forgot-password:hover{
+                  color: white;
+                  background-color: #004282;
+                  transition: ease-in 1s;
+              }
+              .forgot-password small{
+                  border: solid 1px #004282;     
+                  padding: .1rem 1rem;
+              }
+                  }
+</style>
     @endsection
+    

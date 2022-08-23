@@ -16,9 +16,9 @@
                     <h5>&nbsp; CLASS SIZE</h5>
                 </div>
                 <div class="ibox-content">
-                    <h1 class="no-margins">22 285,400</h1>
+                    <h1 class="no-margins">OBJECT</h1>
                     <div class="stat-percent font-bold text-navy">20% <i class="fa fa-level-up"></i></div>
-                    <small>New orders</small>
+                    <small>OOP</small>
                 </div>
             </div>
         </div>
@@ -29,9 +29,9 @@
                     <h5>&nbsp; CLASS AVERAGE GRADE</h5>
                 </div>
                 <div class="ibox-content">
-                    <h1 class="no-margins">60 420,600</h1>
+                    <h1 class="no-margins">Object</h1>
                     <div class="stat-percent font-bold text-info">40% <i class="fa fa-level-up"></i></div>
-                    <small>New orders</small>
+                    <small>OOP</small>
                 </div>
             </div>
         </div>
@@ -42,9 +42,9 @@
                     <h5>&nbsp; GROUPS</h5>
                 </div>
                 <div class="ibox-content">
-                    <h1 class="no-margins">$ 120 430,800</h1>
+                    <h1 class="no-margins">Class</h1>
                     <div class="stat-percent font-bold text-warning">16% <i class="fa fa-level-up"></i></div>
-                    <small>New orders</small>
+                    <small>OOP</small>
                 </div>
             </div>
         </div>

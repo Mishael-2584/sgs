@@ -11,7 +11,7 @@
                         <li class="breadcrumb-item">
                             <a href="{{route('lecturer-dashboard')}}">Lecturer</a>
                         </li>
-                        <li class="breadcrumb-item active">
+                        <li class="breadcrumb-item">
                             <strong>View Students Results</strong>
                         </li>
                     </ol>
@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                <ul class="nav nav-tabs">
-                                <li class="text-color"><a class="nav-link active" data-toggle="tab" href="#tab-1"><i class="fa fa-plus"></i>QUIZZES</a></li>
+                                <li class="text-color"><a class="nav-link" data-toggle="tab" href="#tab-1"><i class="fa fa-plus"></i>QUIZZES</a></li>
                                 <li><a class="text-color" data-toggle="tab" href="#tab-2"><i class="fa fa-address-book"></i>ASSIGNMENTS</a></li>
                                </ul>
                            <div class="tab-content">

@@ -8,7 +8,7 @@
                 <div class="col-sm-4">
                     <h2></h2>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item active">
+                        <li class="breadcrumb-item ">
                             <strong>@isset($quiz_title)
                                 <th><h2>{{$quiz_title->title}}</h2></th>  
                                 @endisset</strong>
