@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\Student;
 use App\Models\Lecturer;
+use App\Models\Student as ModelsStudent;
 use Illuminate\Http\Request;
 
 class LecturerController extends Controller
@@ -14,7 +16,10 @@ class LecturerController extends Controller
      */
     public function index()
     {
-        return view('lecturer.dashboard');
+        $student = ModelsStudent::all();
+        $groups = ModelsStudent::all()->get('group');
+        
+        return view('lecturer.dashboard', compact('student'));
     }
 
     /**

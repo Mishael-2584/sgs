@@ -20,4 +20,9 @@ class Quiz extends Model
     {
         return $this->belongsTo('App\Models\QuizType','quiz_type_id');
     }
+
+    function score()
+    {
+        return $this->belongsTo('App\Models\Score','score_id');
+    }
 }

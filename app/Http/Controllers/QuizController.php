@@ -30,6 +30,7 @@ class QuizController extends Controller
         $quiz_score->grade = $request->score;
         $saved = $quiz_score->save();
         if ($saved){
+            
             return back()->with('success', 'Quiz has been uploaded successfully!!');
         }
         else{

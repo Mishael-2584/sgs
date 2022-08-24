@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Assignment;
 use App\Models\AssignmentType;
+use App\Models\Quiz;
 use App\Models\QuizType;
 use App\Models\Score;
 use App\Models\Student;
@@ -21,6 +23,56 @@ class ScoreController extends Controller
     public function allresults()
     {
         $scores = Score::all();
+        $quiz_no = QuizType::all();
+
+        // dd(count($quiz_no));
+        if(count($quiz_no)==1){
+            
+            $quiz_type = QuizType::get()->first();
+            
+            $quiz_scores = Quiz::where('quiz_type_id', $quiz_type->id)->get()->all();
+            
+            foreach ($quiz_scores as $qs) {
+                $myscore = Score::where('id', $qs->score_id)->get()->first();
+                if($qs->grade!=null){
+                $myscore->quiz = round($qs->grade/$quiz_type->quiz_out_of*10);
+                $myscore->save();
+                }
+            }
+
+
+
+            
+        }
+
+        else{
+
+            $quiz_scores = Quiz::all();
+
+            foreach ($quiz_scores as $qz) {
+                $qz_scores = Quiz::where('score_id', $qz->score_id)->get()->all();
+                $sum = Quiz::where('score_id', $qz->score_id)->sum('grade');
+                $out_of = QuizType::all()->sum('quiz_out_of');
+                $myscore = Score::where('id', $qz->score_id)->get()->first();
+                $average = round(($sum/$out_of)*10);
+                $myscore->quiz = $average;
+                $myscore->save();
+            }
+        }
+
+        $ass_scores = Assignment::all();
+
+        foreach ($ass_scores as $as) {
+            $as_scores = Assignment::where('score_id', $as->score_id)->get()->all();
+            $a_sum = Assignment::where('score_id', $as->score_id)->sum('grade');
+            $a_out_of = AssignmentType::all()->sum('assignment_out_of');
+            $a_score = Score::where('id', $as->score_id)->get()->first();
+            $a_average = round(($a_sum/$a_out_of)*10);
+            
+            // dd($a_score);
+            $a_score->assignments = $a_average;
+            $a_score->save();
+        }
 
         if($scores){
             foreach ($scores as $score) {
@@ -32,12 +84,32 @@ class ScoreController extends Controller
                 $mid_sem = floatval($score->mid_semester);
                 $quiz = floatval($score->quiz);
                 $finals = floatval($score->final_exam);
-                $sum += ceil($attendace + $assignments + $quiz + $mid_sem + $finals);
                 
-                if($sum!=null){
+                $sum += round($attendace + $assignments + $quiz + $mid_sem + $finals);
+                // dd($sum);
+                
                 $myscores->total_grade = $sum;
-                $myscores->save();
+                if ($sum>=80) {
+                    $myscores->letter_grade = 'A';
                 }
+                elseif($sum>=60){
+                    $myscores->letter_grade = 'B';
+                }
+                elseif($sum>=50){
+                    $myscores->letter_grade = 'C';
+                }
+                elseif($sum>=45){
+                    $myscores->letter_grade = 'D';
+                }
+                elseif($sum>=40){
+                    $myscores->letter_grade = 'E';
+                }
+                elseif($sum>=0){
+                    $myscores->letter_grade = 'F';
+                }
+
+                $myscores->save();
+                
                 
                 
                 
@@ -48,8 +120,10 @@ class ScoreController extends Controller
         }
         
         return view('lecturer.allresults', compact('scores'));
+    
     }
 
+    
     public function partresults(){
         $quiztypes = QuizType::all();
         $ass_types = AssignmentType::all();
@@ -67,12 +141,11 @@ class ScoreController extends Controller
                 $mid_sem = floatval($score->mid_semester);
                 $quiz = floatval($score->quiz);
                 $finals = floatval($score->final_exam);
-                $sum += ceil($attendace + $assignments + $quiz + $mid_sem + $finals);
+                $sum += round(($attendace + $assignments + $quiz + $mid_sem + $finals));
                 
-                if($sum!=null){
                 $score->total_grade = $sum;
                 $score->save();
-                }
+                
                 
         return view('lecturer.resultsview', compact('score'));
     }
@@ -89,11 +162,11 @@ class ScoreController extends Controller
         $saved = $score->save();
 
         if ($saved){
-            return back()->with('success', 'Scores have been updated successfully!!!');
+            return redirect()->route('lecturer-allresults')->with('success', 'Scores have been updated successfully!!!');
         }
 
         else{
-            return back()->with('danger', 'Scores have failed to be updated successfully!!!');
+            return redirect()->route('lecturer-allresults')->with('error', 'Scores have failed to be updated successfully!!!');
         }
 
 
