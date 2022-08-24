@@ -1,7 +1,22 @@
 @extends('layouts.app')
 @section('body')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     
+<script>
+    // $( document ).ready(function() {
+    //     console.log( "document loaded" );
+    // });
 
+    // $( window ).on( "load", function() {
+    //     $("body").css("background","blue")
+    //     setTimeout(()=>{
+    //         $("body").css("background","grey")
+    //             console.log("remove bg")
+    //     }, 3)
+    // });
+</script>
+        
 <!-- Wrapper-->
 <div id="wrapper">
 

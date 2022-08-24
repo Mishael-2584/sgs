@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\Score;
+use App\Http\Controllers\StudentController;
 
 
 use App\Models\Student;
@@ -16,7 +17,9 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 
 
-class StudentsImport implements ToCollection, WithHeadingRow
+
+
+class StudentsImport extends StudentController implements ToCollection, WithHeadingRow 
 {
     /**
     * @param array $row
@@ -44,13 +47,19 @@ class StudentsImport implements ToCollection, WithHeadingRow
          Validator::make($rows->toArray(), [
              '*.name' => 'required',
              '*.matric_no' => 'required|unique:students,matric_no|min:7|max:8',
+             '*group' => 'required',
 
          ])->validate();
-  
+            
         foreach ($rows as $row) {
+            // dd($row);
             Student::create([
-                'name' => $row['Full Name'],
-                'matric_no' => $row['Matric Number'],
+                'name' => $row['name'],
+                'matric_no' => $row['matric_no'],
+<<<<<<< Updated upstream
+=======
+                // 'group' => $request,
+>>>>>>> Stashed changes
                 
             ]);
             $studentid = Student::where('matric_no', $row['matric_no'])->get('id')->first();

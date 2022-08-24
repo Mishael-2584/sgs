@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{!! asset('css/modal-css.css') !!}" />
     
     @yield('header')
-
+  
 
     @if(isset($css) && ! empty($css))
 
@@ -29,9 +29,19 @@
       @endforeach
     @endif
 
+
+
 </head>
 <body>
-
+      <div class="ssh">
+        <style>
+          @media (max-width:768px) {
+                head{
+                    background-color: brown;!important
+                }
+            }
+        </style>
+      </div>
  @yield('body')
 
 

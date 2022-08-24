@@ -48,11 +48,15 @@ class StudentController extends Controller
 
             $students = Student::all();
 
-            if($request->group)
             foreach ($students as $student) {
-                Student::create([
-                    'group' => $request->group,
-                ]);
+<<<<<<< Updated upstream
+                // Student::create([
+                //     'group' => $request->group,
+                // ]);
+=======
+>>>>>>> Stashed changes
+                $student->group = $request->group;
+                $student->save();
             }
 
 

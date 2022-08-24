@@ -20,6 +20,28 @@
                 </div>
 
                 <div class="hr-line-dashed"></div>
+
+                {{-- <div class="col-xl-4 col-lg-6 col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <label class="card-title" for="selectColor1">Select Class Group</label>
+                        </div>
+
+                        <div class="card-body">
+                            <fieldset class="form-group position-relative">
+                                <select name="group" class="form-control border-warning" id="selectColor1">
+                                    <option selected>Select Group</option>
+                                    <option value="1">A</option>
+                                    <option value="2">B</option>
+                                    <option value="3">C</option>
+                                    <option value="4">D</option>
+                                    <option value="5">Null</option>
+                                </select>
+                            </fieldset>
+                        </div>
+
+                    </div>
+                </div> --}}
                 
                 <div class="form-group  row">
                 <label class="col col-form-label">Group (LEAVE NULL IF NOT APPLICABLE)</label>
