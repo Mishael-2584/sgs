@@ -8,6 +8,7 @@ use App\Models\Quiz;
 use App\Models\QuizType;
 use App\Models\Score;
 use App\Models\Student;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Sum;
@@ -151,6 +152,22 @@ class ScoreController extends Controller
     }
 
     public function submit_result(Request $request, $id){
+
+        // 'Fno' => 'digits_between:2,5'
+        $rules=[
+            'attendance' => 'numeric|min:0|max:5',
+            'midsem' => 'numeric|min:0|max:15',
+            'final' => 'numeric|min:0|max:60',
+              ];
+        
+        $validator=Validator::make($request->all(), $rules);
+     if($validator->fails())
+        {
+            return back()->withErrors($validator->errors('error'));
+        }
+
+        else{
+
         $score = Score::where('student_id', $id)->get()->first();
         $score->attendace = $request->attendance;
         $score->assignments = $request->assignments;
@@ -160,6 +177,7 @@ class ScoreController extends Controller
         $score->total_grade = $request->total_grade;
         $score->letter_grade = $request->letter_grade;
         $saved = $score->save();
+        }
 
         if ($saved){
             return redirect()->route('lecturer-allresults')->with('success', 'Scores have been updated successfully!!!');

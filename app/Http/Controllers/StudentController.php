@@ -33,6 +33,9 @@ class StudentController extends Controller
 
     public function uploadUsers(Request $request, Score $score)
     {
+            
+
+            
             $filename = $request->import->getClientOriginalName(); // original name that it was uploaded with
             $fileInfo = pathinfo('import');
             $destinationPath = 'uploads/';

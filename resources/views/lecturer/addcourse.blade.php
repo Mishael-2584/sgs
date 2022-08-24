@@ -4,7 +4,7 @@
     
 @section('content')
 
-<div class="col-lg-6">
+<div class="col-lg-12">
     <div class="wrapper wrapper-content">
     <div class="ibox ">
         <div class="ibox-title">

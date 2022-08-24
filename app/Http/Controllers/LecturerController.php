@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Middleware\Student;
 use App\Models\Lecturer;
+use App\Models\Score;
 use App\Models\Student as ModelsStudent;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,13 @@ class LecturerController extends Controller
     {
         $student = ModelsStudent::all();
         $groups = ModelsStudent::all()->get('group');
+        $scores = Score::all();
+
+        foreach ($scores as $score) {
+            
+            $total = Score::where('id', $score->id)->sum('total_grade');
+            
+        }
         
         return view('lecturer.dashboard', compact('student'));
     }
