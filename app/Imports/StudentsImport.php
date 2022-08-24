@@ -56,10 +56,7 @@ class StudentsImport extends StudentController implements ToCollection, WithHead
             Student::create([
                 'name' => $row['name'],
                 'matric_no' => $row['matric_no'],
-<<<<<<< Updated upstream
-=======
-                // 'group' => $request,
->>>>>>> Stashed changes
+
                 
             ]);
             $studentid = Student::where('matric_no', $row['matric_no'])->get('id')->first();
